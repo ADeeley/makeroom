@@ -55,6 +55,24 @@ function keyDown() {
     }
 }
 
+
+function gateCollision(g, b) {
+    // Returns true if the ball is within the bounds of the gate perameters 
+    // specified. To be used on each gate individually
+    
+    // check for collisions with left gate
+    if (b.x > g.x && b.x < (g.x + g.width + b.radius) && b.y > (g.y - b.radius) && b.y < (g.y + g.height + b.radius)) {
+            return true;
+    }
+    // check for collisions with right gate
+    if (b.x > g.x2 && b.x < (g.x2 + g.width + b.radius) && b.y > (g.y2 - b.radius) && b.y < (g.y2 + g.height + b.radius)) {
+            return true;
+        }
+
+    // No collisions
+    return false;
+
+}
 function draw() {
     // set up the background 
     noStroke();
@@ -73,5 +91,8 @@ function draw() {
     ellipse(ball.x, ball.y, ball.diameter, ball.diameter);
     ball.y++;
 
-  
+    // check for collisions between the ball and barriers
+    if (gateCollision(gateAZ, ball) || gateCollision(gateBY, ball)) {
+        ball.y = 20;
+    } 
 }
