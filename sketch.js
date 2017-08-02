@@ -60,17 +60,22 @@ function keyDown() {
     }
   }
 }
+
 function collisionEvent(gate) {
     // Returns true if the ball is within the bounds of the gate perameters 
     // specified. To be used on each gate individually
 
     // check if the gate is not colliding with the ball
-    if (!(ball.x + ball.radius < gate.leftGateX || ball.x - ball.radius > gate.leftGateX + gate.width 
-        || ball.y + ball.radius < gate.leftGateY || ball.y - ball.radius> gate.leftGateY + gate.height )) {
+    if (!(ball.x + ball.radius < gate.leftGateX 
+        || ball.x - ball.radius > gate.leftGateX + gate.width 
+        || ball.y + ball.radius < gate.leftGateY 
+        || ball.y - ball.radius> gate.leftGateY + gate.height )) {
         return true;   
     }
-    if (!(ball.x + ball.radius < gate.rightGateX || ball.x - ball.radius > gate.rightGateX + gate.width 
-        || ball.y + ball.radius< gate.rightGateY || ball.y - ball.radius > gate.rightGateY + gate.height )) {
+    if (!(ball.x + ball.radius < gate.rightGateX 
+        || ball.x - ball.radius > gate.rightGateX + gate.width 
+        || ball.y + ball.radius< gate.rightGateY 
+        || ball.y - ball.radius > gate.rightGateY + gate.height )) {
         return true;   
     }
     // No collisions
@@ -91,8 +96,10 @@ function draw() {
     // create the gates for the ball to fall through
     fill(250, 200, 200);
     for (i = 0; i < gates.gates.length; i++) {
-        rect(gates.gates[i].leftGateX, gates.gates[i].leftGateY, gates.gates[i].width, gates.gates[i].height);
-        rect(gates.gates[i].rightGateX, gates.gates[i].rightGateY, gates.gates[i].width, gates.gates[i].height);
+        rect(gates.gates[i].leftGateX, gates.gates[i].leftGateY, 
+             gates.gates[i].width, gates.gates[i].height);
+        rect(gates.gates[i].rightGateX, gates.gates[i].rightGateY, 
+             gates.gates[i].width, gates.gates[i].height);
     }
     
     // Check for key presses
